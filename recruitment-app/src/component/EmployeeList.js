@@ -1,29 +1,57 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Employee from "./Employee";
 
 function EmployeeList(){
     
-    const [employess, setEmployess] =useState([{
+    const [employess, setEmployess] =useState([
+        {
         name: "Saurabh Chauhan",
         email: "saurabh311@gmail.com",
         phone: "734940044",
         skills: "Java, React, JavaScript, HTML, CSS, Python",
-        avatar: "https://imgur.com/a/TfuJ77a",
-    }]);
+        avatar: "https://i.imgur.com/t9HFQvX.png",
+        },
+        {
+        name: "Poonam",
+        email: "poonam@gmail.com",
+        phone: "734940055",
+        skills: "C++, Python, SQL",
+        avatar: "https://i.imgur.com/ebHfuth.png",
+        },
+        {
+            name: "Robin ",
+            email: "robin312@gmail.com",
+            phone: "7349404543",
+            skills: "C#, Python, SQL",
+            avatar: "https://i.imgur.com/Q9qFt3m.png", 
+    
+        }
+    ]);
 
     function handleAddEmployee(){
-        alert("clicked");
-    }
+        setEmployess((prevState)=>{
+            return [
+                ...prevState,
+                {
+                    name: "Peter",
+                    email: "peter44@gmail.com",
+                    phone: "734944455",
+                    skills: "Java, Python, SQL, Javacript",
+                    avatar: "https://i.imgur.com/t9HFQvX.png", 
+            
+                }
+            ];
+        })
+    };
     return (
         <div>
         <h3>Employee List</h3>
-        <button onClick={handleAddEmployee}>Add Employeee</button>
+        <button onClick={handleAddEmployee} className = "button">Add Employeee</button>
         <div>
-        {employess.map((employee) => {
+        {employess.map((employee) => (
             <Employee EmployeesData = {employee} />
-        })
-        }
-        <Employee /> 
+        ))}
+         
         </div>
         </div>
     );

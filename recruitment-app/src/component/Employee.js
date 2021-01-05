@@ -1,13 +1,27 @@
 
 
-function Employee(EmployeesData){
+function Employee({EmployeesData}){
     return(
+        <div className="EmployeeDiv">
+        <img src={EmployeesData.avatar} className="avatar"/>
         <div>
-        <h2>{EmployeesData.name}</h2>
-        <p>Email: {EmployeesData.email}</p>
-        <p>Phone: {EmployeesData.phone}</p>
-        <p>Skills:{EmployeesData.name}</p>
-        <p>{EmployeesData.avatar}</p>
+        <p>
+        <strong>Name:</strong>
+        {EmployeesData.name}
+        </p>
+        <p>
+        <strong>Email:</strong>
+         {EmployeesData.email}
+        </p>
+        <p>
+        <strong>Phone:</strong>
+         {EmployeesData.phone}
+        </p>
+        <p>
+        <strong>Skills:</strong>
+         {EmployeesData.skills}
+        </p>
+        </div>
         </div>
     );
 }
