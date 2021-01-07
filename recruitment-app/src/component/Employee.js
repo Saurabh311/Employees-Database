@@ -1,7 +1,9 @@
-
+import handleRemoveItem from "./EmployeeList";
 
 function Employee({EmployeesData}){
+    
     return(
+        <div>
         <div className="EmployeeDiv">
         <img src={EmployeesData.avatar} className="avatar"/>
         <div>
@@ -21,7 +23,10 @@ function Employee({EmployeesData}){
         <strong>Skills:</strong>
          {EmployeesData.skills}
         </p>
+        </div>     
         </div>
+     
+        
         </div>
     );
 }

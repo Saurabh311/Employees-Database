@@ -1,5 +1,7 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, ReactDOM} from "react";
 import Employee from "./Employee";
+
+
 
 function EmployeeList(){
     
@@ -19,15 +21,14 @@ function EmployeeList(){
         avatar: "https://i.imgur.com/ebHfuth.png",
         },
         {
-            name: "Robin ",
-            email: "robin312@gmail.com",
-            phone: "7349404543",
-            skills: "C#, Python, SQL",
-            avatar: "https://i.imgur.com/Q9qFt3m.png", 
+        name: "Robin ",
+        email: "robin312@gmail.com",
+        phone: "7349404543",
+        skills: "C#, Python, SQL",
+        avatar: "https://i.imgur.com/Q9qFt3m.png", 
     
         }
     ]);
-
     function handleAddEmployee(){
         setEmployess((prevState)=>{
             return [
@@ -43,18 +44,29 @@ function EmployeeList(){
             ];
         })
     };
-    return (
-        <div>
+    function handleRemoveItem (e) {
+        const name = e.target.getAttribute("name")
+         setEmployess(employess.filter(item => item.name !== name));
+       };
+     
+       return (
+        <div>        
         <h3>Employee List</h3>
         <button onClick={handleAddEmployee} className = "button">Add Employeee</button>
         <div>
         {employess.map((employee) => (
             <Employee EmployeesData = {employee} />
         ))}
-         
-        </div>
-        </div>
-    );
-}
-
+            {employess.map(item => {
+             return (
+               <button name={item.name} onClick={handleRemoveItem} className = "button">Delete</button>            
+               
+             );
+           })}
+         </div>
+         </div> 
+       );
+     };
+    
+    
 export default EmployeeList;
