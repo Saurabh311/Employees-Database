@@ -1,23 +1,13 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import Employee from "./Employee";
 import { Link } from "react-router-dom";
+import useLocalStorage from "./LocalStorage";
 
 
-const useStateWithLocalStorage = localStorageKey => {
-  const [employess, setEmployess] = useState(
-    localStorage.getItem(localStorageKey) || ''
-  );
-
-  useEffect(() => {
-    localStorage.setItem(setEmployess, employess);
-  }, [employess]);
-
-  return [employess, setEmployess];
-};
 
 function EmployeeList(){
     
-    const [employess, setEmployess] =useState([
+    const [employess, setEmployess] =useLocalStorage("employess",[
         {
         name: "Saurabh Chauhan",
         email: "saurabh311@gmail.com",
@@ -26,7 +16,7 @@ function EmployeeList(){
         avatar: "https://i.imgur.com/t9HFQvX.png",
         },
         {
-        name: "Poonam",
+        name: "Poonam Rathore",
         email: "poonam@gmail.com",
         phone: "734940055",
         skills: "C++, Python, SQL",
@@ -64,17 +54,17 @@ function EmployeeList(){
      
        return (
         <div>        
-        <h3>Employee List</h3>
-        <button onClick={handleAddEmployee} className = "button">Add Employeee</button>
-        <div>
+           <h3>Employee List</h3>
+           <button onClick={handleAddEmployee} className = "button">Add Employeee</button>
+          <div>
         {employess.map((employee) => (
           <div> 
             <Employee EmployeesData = {employee} />
             <button name={employee.name} onClick={handleRemoveItem} className = "button">Delete</button>
-            </div>
+          </div>
         ))}                 
             
-         </div>
+          </div>
          </div> 
        );
      };
