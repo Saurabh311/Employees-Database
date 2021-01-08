@@ -5,7 +5,7 @@ function Employee({EmployeesData}){
     return(
         <div>
         <div className="EmployeeDiv">
-        <img src={EmployeesData.avatar} className="avatar"/>
+        <img src={EmployeesData.avatar} alt="profile pictur" className="avatar"/>
         <div>
         <p>
         <strong>Name:</strong>
@@ -24,8 +24,7 @@ function Employee({EmployeesData}){
          {EmployeesData.skills}
         </p>
         </div>     
-        </div>
-     
+        </div>     
         
         </div>
     );
